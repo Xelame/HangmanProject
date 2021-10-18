@@ -24,7 +24,7 @@ func ReadWord(dictionary []byte, wordPositionChoosen int) string {
 			count++
 		}
 	}
-	return string(myWord[:len(myWord)]) // Return the word without the '\n' at the end
+	return string(myWord) // Return the word
 }
 
 // Function to know number of word in the dictionary

@@ -27,5 +27,5 @@ func PrintJose(nbrs_tentative int, Hangman string) {
 	}
 	contenuHangmanString = append(contenuHangmanString, dessin)
 	//Afficher la case du tableau qui correspond au nbrs de tentative
-	fmt.Println(contenuHangmanString)
+	fmt.Println(contenuHangmanString[10-nbrs_tentative])
 }
