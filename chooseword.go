@@ -1,22 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"time"
 )
 
-func ChooseWord() string {
-	dictionary, err := ioutil.ReadFile("words.txt")
-	if err != nil {
-		fmt.Println(err.Error())
-	}
+// Main Function who return our word in string
+func ChooseWord(dictionary []byte) string {
 	dictLenght := CalcNumberOfWord(dictionary)
 	randomNumber := ChooseRandomNumber(dictLenght)
 	return ReadWord(dictionary, randomNumber)
 }
 
+//
 func ReadWord(dictionary []byte, wordPositionChoosen int) string {
 	count := 0
 	myWord := []byte{}
