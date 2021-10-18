@@ -11,11 +11,23 @@ func main() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	wordChoosen := ChooseWord(dictionary) // FIXME Use this
-	//Partie José
-	PrintJosé(8, "hangman.txt") // TODO Read the file and init a []byte before calling function
+	wordChoosen := ChooseWord(dictionary)
 
-	// TODO List of function to show our output (Nathan)
-	// TODO Create a hidden word and manipulate it (Alex)
+	// Hidden word part
+	lettersAlreadyAppeard := []rune{}
+	startHint := wordChoosen[len(wordChoosen)/2-1]
+	lettersAlreadyAppeard = append(lettersAlreadyAppeard, rune(startHint))
+	hiddenWord := HideWord(wordChoosen, lettersAlreadyAppeard)
+	fmt.Println(hiddenWord)
+
+	//Partie José
+	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt") // FIXME Upgrade, if it's possible, the ASCII ART 👨‍🎨
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	PrintJose(8, string(contenuHangmanByte)) // Récupération des données du fichier
+
+	// TODO List of function to show our output (Nathan) 😁
+	// TODO Add Guessing function 🤔 (with the HideWord function, he is adapted 👍)
 
 }
