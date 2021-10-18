@@ -7,15 +7,14 @@ import (
 	"time"
 )
 
-func ChooseWord() {
+func ChooseWord() string {
 	dictionary, err := ioutil.ReadFile("words.txt")
 	if err != nil {
 		fmt.Println(err.Error())
-	} else {
-		dictLenght := CalcNumberOfWord(dictionary)
-		randomNumber := ChooseRandomNumber(dictLenght)
-		fmt.Println(ReadWord(dictionary, randomNumber))
 	}
+	dictLenght := CalcNumberOfWord(dictionary)
+	randomNumber := ChooseRandomNumber(dictLenght)
+	return ReadWord(dictionary, randomNumber)
 }
 
 func ReadWord(dictionary []byte, wordPositionChoosen int) string {
@@ -29,7 +28,7 @@ func ReadWord(dictionary []byte, wordPositionChoosen int) string {
 			count++
 		}
 	}
-	return string(myWord)
+	return string(myWord[:len(myWord)])
 }
 func CalcNumberOfWord(dictionary []byte) int {
 	count := 0
