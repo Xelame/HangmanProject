@@ -1,5 +1,8 @@
 package main
 
-// Partie recherche du mot dans le fichier
+func main() {
+	// Partie recherche du mot dans le fichier
 
-//Partie
+	//Partie José
+	PrintJosé(8, "hangman.txt")
+}
