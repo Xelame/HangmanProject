@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+// TODO Add Comments ^^
+
 // Main Function who return our word in string
 func ChooseWord(dictionary []byte) string {
 	dictLenght := CalcNumberOfWord(dictionary)
