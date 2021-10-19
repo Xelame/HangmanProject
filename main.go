@@ -29,5 +29,9 @@ func main() {
 
 	// TODO List of function to show our output (Nathan) 😁
 	// TODO Add Guessing function 🤔 (with the HideWord function, he is adapted 👍)
+	// TODO Add language choose and adapt variables 📚
 
+	// Part Input Player
+	GuessingLetter(&lettersAlreadyAppeard)
+	fmt.Print(lettersAlreadyAppeard)
 }
