@@ -1,13 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"io/ioutil"
-	"os"
 )
 
 //TODO Faire une fonction qui permet de rejouer
+
 func main() {
 	// Partie recherche du mot dans le fichier
 	dictionary, err := ioutil.ReadFile("words.txt")
@@ -20,7 +19,7 @@ func main() {
 	lettersAlreadyAppeard := []rune{}
 	startHint := wordChoosen[len(wordChoosen)/2-1]
 	lettersAlreadyAppeard = append(lettersAlreadyAppeard, rune(startHint))
-	hiddenWord := HideWord(wordChoosen, lettersAlreadyAppeard) // FIXME Memory not update all times
+	hiddenWord := HideWord(wordChoosen, &lettersAlreadyAppeard) // FIXME Memory not update all times
 
 	//Partie José initialisation
 	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt") // FIXME Upgrade, if it's possible, the ASCII ART 👨‍🎨
@@ -32,39 +31,20 @@ func main() {
 
 	//Partie présentation du jeu
 	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
-	//Partie boucle principale
+
+	//Partie boucle de jeu
 	attempts := 10
-	for isFinish(attempts, hiddenWord) {
-		fmt.Println(HideWord(wordChoosen, lettersAlreadyAppeard))
+	for isFinished(attempts, hiddenWord) {
+		fmt.Println(HideWord(wordChoosen, &lettersAlreadyAppeard))
 		PrintJose(attempts, string(contenuHangmanByte)) // Récupération des données du fichier
 
 		// Part Input Player
 		GuessingLetter(&lettersAlreadyAppeard)
-		if hiddenWord == HideWord(wordChoosen, lettersAlreadyAppeard) {
+		if hiddenWord == HideWord(wordChoosen, &lettersAlreadyAppeard) {
 			attempts--
 		} else {
-			hiddenWord = HideWord(wordChoosen, lettersAlreadyAppeard)
+			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
 	}
-	var yn string
-	if attempts == 0 {
-		fmt.Println("Poor José ....\nRetry your chance for him to survive ?\nY/N : ")
-		for yn != "y" || yn != "Y" || yn != "N" || yn != "n" {
-			reader := bufio.NewReader(os.Stdin)
-			yn, _ = reader.ReadString('\n')
-		}
-		if yn == "y" || yn == "Y" {
-			replay()
-		}
-	} else {
-		fmt.Println("You saved José !!\ndo you want to replay ?\nY/N : ")
-		for yn != "y" || yn != "Y" || yn != "N" || yn != "n" {
-			reader := bufio.NewReader(os.Stdin)
-			yn, _ = reader.ReadString('\n')
-		}
-		if yn == "y" || yn == "Y" {
-			replay()
-		}
-	}
-	fmt.Println("Thank you for playing, see you soon?")
+	fmt.Println("Poor José ...\nRetry your chance for him to survive ?")
 }
