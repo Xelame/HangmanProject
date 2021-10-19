@@ -34,7 +34,7 @@ func main() {
 	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
 	//Partie boucle principale
 	attempts := 0
-	for wordChoosen == hiddenWord {
+	for isFinish(8, "hello") { // mettre les variables correspondante
 		PrintJose(attempts, string(contenuHangmanByte)) // Récupération des données du fichier
 
 		// Part Input Player
