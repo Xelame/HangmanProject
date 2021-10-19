@@ -30,8 +30,8 @@ func main() {
 	//Partie présentation du jeu
 	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
 	//Partie boucle principale
-	attempts := 0
-	for isFinish(8, hiddenWord) {
+	attempts := 10
+	for isFinish(attempts, hiddenWord) {
 		fmt.Println(HideWord(wordChoosen, lettersAlreadyAppeard))
 		PrintJose(attempts, string(contenuHangmanByte)) // Récupération des données du fichier
 
