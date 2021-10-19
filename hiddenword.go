@@ -6,6 +6,8 @@ import (
 	"os"
 )
 
+//FIXME case en trop !
+
 // TODO Add Comment ^^
 
 // TODO Ready to be use for another function 😉
