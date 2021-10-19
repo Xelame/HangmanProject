@@ -1,7 +1,5 @@
 package main
 
-//TODO Non gestion des erreurs du fichier
-
 import (
 	"fmt"
 )

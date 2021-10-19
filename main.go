@@ -5,7 +5,9 @@ import (
 	"io/ioutil"
 )
 
-//TODO Faire une fonction qui permet de rejouer
+// TODO Faire une fonction qui permet de rejouer (PS : réutilisé main en soit ...)
+// TODO Add language choose and adapt variables 📚
+// FIXME I'ved broke finish sorry
 
 func main() {
 	// Partie recherche du mot dans le fichier
@@ -19,15 +21,13 @@ func main() {
 	lettersAlreadyAppeard := []rune{}
 	startHint := wordChoosen[len(wordChoosen)/2-1]
 	lettersAlreadyAppeard = append(lettersAlreadyAppeard, ToUpper(rune(startHint)))
-	hiddenWord := HideWord(wordChoosen, &lettersAlreadyAppeard) // FIXME Memory not update all times
+	hiddenWord := HideWord(wordChoosen, &lettersAlreadyAppeard)
 
 	//Partie José initialisation
-	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt") // FIXME Upgrade, if it's possible, the ASCII ART 👨‍🎨
+	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt") // TODO Upgrade, if it's possible, the ASCII ART 👨‍🎨
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-
-	// TODO Add language choose and adapt variables 📚
 
 	//Partie présentation du jeu
 	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")

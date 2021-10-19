@@ -1,7 +1,5 @@
 package main
 
-// TODO Validité des entrées & test tout en minuscule et affichage tout en majuscule
-
 func HideWord(word string, listOfLetterAlreadySay *[]rune) string {
 	hiddenWord := []rune{}        // Initialize hiddenword
 	for _, letter := range word { // travel word letter by letter
