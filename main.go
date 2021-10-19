@@ -28,6 +28,7 @@ func main() {
 
 	// TODO List of function to show our output (Nathan) 😁
 	// TODO Add Guessing function 🤔 (with the HideWord function, he is adapted 👍)
+	// TODO Add language choose and adapt variables 📚
 
 	//Partie présentation du jeu
 	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
@@ -36,5 +37,8 @@ func main() {
 	for wordChoosen == hiddenWord {
 		PrintJose(attempts, string(contenuHangmanByte)) // Récupération des données du fichier
 
+		// Part Input Player
+		GuessingLetter(&lettersAlreadyAppeard)
+		fmt.Print(lettersAlreadyAppeard)
 	}
 }
