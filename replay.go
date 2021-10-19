@@ -7,8 +7,7 @@ import (
 	"os"
 )
 
-//TODO Faire une fonction qui permet de rejouer
-func main() {
+func replay() {
 	// Partie recherche du mot dans le fichier
 	dictionary, err := ioutil.ReadFile("words.txt")
 	if err != nil {
@@ -66,5 +65,4 @@ func main() {
 			replay()
 		}
 	}
-	fmt.Println("Thank you for playing, see you soon?")
 }
