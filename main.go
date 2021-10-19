@@ -18,7 +18,7 @@ func main() {
 	// Hidden word part
 	lettersAlreadyAppeard := []rune{}
 	startHint := wordChoosen[len(wordChoosen)/2-1]
-	lettersAlreadyAppeard = append(lettersAlreadyAppeard, rune(startHint))
+	lettersAlreadyAppeard = append(lettersAlreadyAppeard, ToUpper(rune(startHint)))
 	hiddenWord := HideWord(wordChoosen, &lettersAlreadyAppeard) // FIXME Memory not update all times
 
 	//Partie José initialisation
