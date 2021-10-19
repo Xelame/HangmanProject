@@ -20,14 +20,21 @@ func main() {
 	hiddenWord := HideWord(wordChoosen, lettersAlreadyAppeard)
 	fmt.Println(hiddenWord)
 
-	//Partie José
+	//Partie José initialisation
 	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt") // FIXME Upgrade, if it's possible, the ASCII ART 👨‍🎨
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	PrintJose(8, string(contenuHangmanByte)) // Récupération des données du fichier
 
 	// TODO List of function to show our output (Nathan) 😁
 	// TODO Add Guessing function 🤔 (with the HideWord function, he is adapted 👍)
 
+	//Partie présentation du jeu
+	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
+	//Partie boucle principale
+	attempts := 0
+	for wordChoosen == hiddenWord {
+		PrintJose(attempts, string(contenuHangmanByte)) // Récupération des données du fichier
+
+	}
 }
