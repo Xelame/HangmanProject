@@ -1,7 +1,8 @@
 package main
 
 // TODO Add Comments ^^
-func isFinish(numberOfAttempts int, word string) bool {
+
+func isFinished(numberOfAttempts int, word string) bool {
 	isRunning := true
 	numberOfLetterMissing := 0
 	if numberOfAttempts == 0 {
