@@ -17,7 +17,7 @@ func main() {
 	lettersAlreadyAppeard := []rune{}
 	startHint := wordChoosen[len(wordChoosen)/2-1]
 	lettersAlreadyAppeard = append(lettersAlreadyAppeard, rune(startHint))
-	hiddenWord := HideWord(wordChoosen, lettersAlreadyAppeard)
+	hiddenWord := HideWord(wordChoosen, lettersAlreadyAppeard) // FIXME Memory not update all times
 
 	//Partie José initialisation
 	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt") // FIXME Upgrade, if it's possible, the ASCII ART 👨‍🎨

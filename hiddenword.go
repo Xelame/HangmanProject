@@ -6,11 +6,8 @@ import (
 	"os"
 )
 
-//FIXME case en trop !
+// TODO Validité des entrées & test tout en minuscule et affichage tout en majuscule
 
-// TODO Add Comment ^^
-
-// TODO Ready to be use for another function 😉
 func HideWord(word string, listOfLetterAlreadySay []rune) string {
 	hiddenWord := []rune{}        // Initialize hiddenword
 	for _, letter := range word { // travel word letter by letter
@@ -31,12 +28,39 @@ func HideWord(word string, listOfLetterAlreadySay []rune) string {
 	return string(hiddenWord)
 }
 
+// TODO Add Comments 😉
+
 func GuessingLetter(listOfLetterAlreadySay *[]rune) {
-	var text string
-	for len(text) != 2 {
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Print("Give me a letter : ")
-		text, _ = reader.ReadString('\n')
+	var letterGuessed rune
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Can you give me a letter please : ")
+	for input, err := reader.ReadString('\n'); !IsNotValid(input, *listOfLetterAlreadySay); input, err = reader.ReadString('\n') {
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		fmt.Print("Can you give me a letter please : ")
+		letterGuessed = rune(input[0])
 	}
-	*listOfLetterAlreadySay = append(*listOfLetterAlreadySay, rune(text[0]))
+	*listOfLetterAlreadySay = append(*listOfLetterAlreadySay, rune(letterGuessed))
+}
+
+func IsNotValid(guessingInput string, listOfLetterAlreadySay []rune) bool {
+	isValid := true
+	if len(guessingInput) == 2 {
+		guessingLetter := rune(guessingInput[0])
+		for _, letterAlreadyHere := range listOfLetterAlreadySay {
+			if guessingLetter == letterAlreadyHere {
+				isValid = false
+				fmt.Println("This letter is already says.")
+			}
+		}
+		if !(('A' <= guessingLetter && guessingLetter <= 'Z') || ('a' <= guessingLetter && guessingLetter <= 'z')) {
+			isValid = false
+			fmt.Println("Don't write something else than a letter please.")
+		}
+	} else {
+		isValid = false
+		fmt.Println("Don't write more than one letter please.")
+	}
+	return isValid
 }
