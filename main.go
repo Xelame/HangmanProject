@@ -3,20 +3,21 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 )
 
 // TODO  If it's possible, add language choose and adapt variables 📚
-// FIXME Gestions des constantes
-// FIXME Gestion des erreurs
+// FIXME Gestions des constantes (notamment les strings)
 // FIXME Lecture des fichiers (+ entrée joueur)
 // FIXME Fractionnage des fichier a revoir
 // TODO If it's possible, upgrade the ASCII ART 👨‍🎨
 
 func main() {
 	// Partie recherche du mot dans le fichier
-	dictionary, err := ioutil.ReadFile("words.txt")
-	if err != nil {
-		fmt.Println(err.Error())
+	dictionary, errDict := ioutil.ReadFile("words.txt")
+	if errDict != nil {
+		errorDectection(errDict)
+		log.Fatal("\n||HOO...no ... José couldn't choose a word :(                   ||\n||Please try to close and open the app again so José can decide!||")
 	}
 	wordChoosen := ChooseWord(dictionary)
 
@@ -27,9 +28,10 @@ func main() {
 	hiddenWord := HideWord(wordChoosen, &lettersAlreadyAppeard)
 
 	//Partie José initialisation
-	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt")
-	if err != nil {
-		fmt.Println(err.Error())
+	contenuHangmanByte, errHang := ioutil.ReadFile("hangman.txt")
+	if errHang != nil {
+		errorDectection(errHang)
+		log.Fatal("\n||HOO no ... José did not find his rope!                        ||\n||Please close the program and open it so that José can find it.||")
 	}
 	solution := []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 	//Partie présentation du jeu
