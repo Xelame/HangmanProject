@@ -7,22 +7,29 @@ import (
 )
 
 // TODO  If it's possible, add language choose and adapt variables 📚
-// FIXME Gestions des constantes (notamment les strings)
-// FIXME Lecture des fichiers (+ entrée joueur)
+// FIXME Gestions des constantes (notamment les strings) 🕵️‍♂️
+// FIXME Lecture des fichiers (+ entrée joueur) 🧙‍♂️
 // FIXME Fractionnage des fichier a revoir
 // TODO If it's possible, upgrade the ASCII ART 👨‍🎨
+/*----------------------------------------------------------------------------------------------------------------
+**DECLARATION DE CONSTANTE**
+ */
+const TEXT_ERROR_DICT = "\n||HOO...no ... José couldn't choose a word :(                   ||\n||Please try to close and open the app again so José can decide!||"
+const TEXT_ERROR_NO_WORD = "No Word in file"
+const TEXT_ERROR_HANG = "\n||HOO no ... José did not find his rope!                        ||\n||Please close the program and open it so that José can find it.||"
+const TEXT_ERROR_NO_CONTENT = "No content in Hangman.txt"
 
+//----------------------------------------------------------------------------------------------------------------
 func main() {
 	// Partie recherche du mot dans le fichier
-	dictionary, errDict := ioutil.ReadFile("words.txt")
+	dictionary, errDict := ioutil.ReadFile("word.txt")
 	if errDict != nil {
 		errorDectection(errDict.Error())
-		log.Fatal("\n||HOO...no ... José couldn't choose a word :(                   ||\n||Please try to close and open the app again so José can decide!||")
+		log.Fatal(TEXT_ERROR_DICT)
 	}
 	if string(dictionary) == "" {
-		errDictNoWord := "No Word in file"
-		errorDectection(errDictNoWord)
-		log.Fatal("\n||HOO...no ... José couldn't choose a word :(                   ||\n||Please try to close and open the app again so José can decide!||")
+		errorDectection(TEXT_ERROR_NO_WORD)
+		log.Fatal(TEXT_ERROR_DICT)
 	}
 	wordChoosen := ChooseWord(dictionary)
 	// Hidden word part
@@ -35,14 +42,13 @@ func main() {
 	contenuHangmanByte, errHang := ioutil.ReadFile("hangman.txt")
 	if errHang != nil {
 		errorDectection(errHang.Error())
-		log.Fatal("\n||HOO no ... José did not find his rope!                        ||\n||Please close the program and open it so that José can find it.||")
+		log.Fatal(TEXT_ERROR_HANG)
 	}
 	solution := []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 
 	if string(contenuHangmanByte) == "" {
-		errDictNoWord := "No content in Hangman.txt"
-		errorDectection(errDictNoWord)
-		log.Fatal("\n||HOO no ... José did not find his rope!                        ||\n||Please close the program and open it so that José can find it.||")
+		errorDectection(TEXT_ERROR_NO_CONTENT)
+		log.Fatal(TEXT_ERROR_HANG)
 	}
 
 	//Partie présentation du jeu
