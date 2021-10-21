@@ -45,5 +45,5 @@ func ChooseRandomNumber(numberOfWords int) int {
 	// Init Rand type who have a random number in each type
 	randomValue := rand.New(randomSource)
 	// Fix a limit for the random number who is my number of word
-	return randomValue.Intn(numberOfWords)
+	return randomValue.Intn(numberOfWords + 1)
 }
