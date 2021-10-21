@@ -46,6 +46,7 @@ func main() {
 			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
 	}
+	fmt.Println(HideWord(wordChoosen, &lettersAlreadyAppeard))
 	if attempts != 0 {
 		fmt.Println("Well Played you found the word and save Jose !")
 	} else {
