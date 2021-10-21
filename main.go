@@ -41,10 +41,6 @@ func main() {
 
 	}
 
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
 	solution := []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 
 	if string(contenuHangmanByte) == "" {
@@ -60,7 +56,7 @@ func main() {
 	attempts := 10
 	for isFinished(attempts, hiddenWord) {
 		fmt.Println(HideWord(wordChoosen, &lettersAlreadyAppeard))
-		PrintJose(attempts, scanner.Text()) // Récupération des données du fichier
+		PrintJose(attempts, string(contenuHangmanByte)) // Récupération des données du fichier
 
 		// Part Input Player
 		GuessingLetter(&lettersAlreadyAppeard)
@@ -70,7 +66,7 @@ func main() {
 			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
 	}
-	PrintJose(attempts, scanner.Text())
+	PrintJose(attempts, string(contenuHangmanByte))
 	fmt.Println(HideWord(wordChoosen, &solution))
 	if attempts != 0 {
 		fmt.Println("Well Played you found the word and save Jose !\nDo you want to retry ? [Y]es or [N]o")
