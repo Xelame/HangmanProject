@@ -6,11 +6,12 @@ import (
 )
 
 // TODO Faire une fonction qui permet de rejouer (PS : réutilisé main en soit ...)
-// TODO Add language choose and adapt variables 📚
+// TODO  If it's possible, add language choose and adapt variables 📚
 // FIXME Gestions des constantes
 // FIXME Gestion des erreurs
 // FIXME Lecture des fichiers (+ entrée joueur)
-// FIXME Fractionnage des fichier a r
+// FIXME Fractionnage des fichier a revoir
+// TODO If it's possible, upgrade the ASCII ART 👨‍🎨
 
 func main() {
 	// Partie recherche du mot dans le fichier
@@ -27,7 +28,7 @@ func main() {
 	hiddenWord := HideWord(wordChoosen, &lettersAlreadyAppeard)
 
 	//Partie José initialisation
-	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt") // TODO Upgrade, if it's possible, the ASCII ART 👨‍🎨
+	contenuHangmanByte, err := ioutil.ReadFile("hangman.txt")
 	if err != nil {
 		fmt.Println(err.Error())
 	}
