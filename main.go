@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 )
 
-// TODO Faire une fonction qui permet de rejouer (PS : réutilisé main en soit ...)
 // TODO  If it's possible, add language choose and adapt variables 📚
 // FIXME Gestions des constantes
 // FIXME Gestion des erreurs
@@ -32,7 +31,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-
+	solution := []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 	//Partie présentation du jeu
 	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
 
@@ -50,6 +49,8 @@ func main() {
 			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
 	}
+	PrintJose(attempts, string(contenuHangmanByte))
+	fmt.Println(HideWord(wordChoosen, &solution))
 	if attempts != 0 {
 		fmt.Println("Well Played you found the word and save Jose !")
 	} else {
