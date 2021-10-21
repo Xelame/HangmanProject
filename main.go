@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 )
 
-// TODO Faire une fonction qui permet de rejouer (PS : réutilisé main en soit ...)
 // TODO  If it's possible, add language choose and adapt variables 📚
 // FIXME Gestions des constantes
 // FIXME Gestion des erreurs
@@ -50,15 +49,18 @@ func main() {
 			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
 	}
+	PrintJose(attempts, string(contenuHangmanByte))
+	fmt.Println(wordChoosen)
 	if attempts != 0 {
-		fmt.Println("Well Played you found the word and save Jose !")
+		fmt.Println("Well Played you found the word and save Jose !\nDo you want to retry ? [Y]es or [N]o")
+		Retry()
 	} else {
+		fmt.Println("Poor Jose ...\nRetry your chance for him to survive ? [Y]es or [N]o")
 		Retry()
 	}
 }
 
 func Retry() {
-	fmt.Println("Poor Jose ...\nRetry your chance for him to survive ? [Y]es or [N]o")
 	var input string
 	fmt.Scanf("%s", &input)
 	if len(input) == 1 {
