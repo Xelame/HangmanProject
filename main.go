@@ -7,7 +7,10 @@ import (
 
 // TODO Faire une fonction qui permet de rejouer (PS : réutilisé main en soit ...)
 // TODO Add language choose and adapt variables 📚
-// FIXME I'ved broke finish sorry
+// FIXME Gestions des constantes
+// FIXME Gestion des erreurs
+// FIXME Lecture des fichiers (+ entrée joueur)
+// FIXME Fractionnage des fichier a r
 
 func main() {
 	// Partie recherche du mot dans le fichier
@@ -46,7 +49,6 @@ func main() {
 			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
 	}
-	fmt.Println(HideWord(wordChoosen, &lettersAlreadyAppeard))
 	if attempts != 0 {
 		fmt.Println("Well Played you found the word and save Jose !")
 	} else {
