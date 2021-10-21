@@ -31,7 +31,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-
+	solution := []rune{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}
 	//Partie présentation du jeu
 	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
 
@@ -50,7 +50,7 @@ func main() {
 		}
 	}
 	PrintJose(attempts, string(contenuHangmanByte))
-	fmt.Println(wordChoosen)
+	fmt.Println(HideWord(wordChoosen, &solution))
 	if attempts != 0 {
 		fmt.Println("Well Played you found the word and save Jose !\nDo you want to retry ? [Y]es or [N]o")
 		Retry()
