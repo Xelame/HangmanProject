@@ -46,5 +46,21 @@ func main() {
 			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
 	}
-	fmt.Println("Poor José ...\nRetry your chance for him to survive ?")
+	if attempts != 0 {
+		fmt.Println("Well Played you found the word and save Jose !")
+	} else {
+		Retry()
+	}
+}
+
+func Retry() {
+	fmt.Println("Poor Jose ...\nRetry your chance for him to survive ? [Y]es or [N]o")
+	var input string
+	fmt.Scanf("%s", &input)
+	if len(input) == 1 {
+		letter := rune(input[0])
+		if ToUpper(letter) == 'Y' {
+			main()
+		}
+	}
 }
