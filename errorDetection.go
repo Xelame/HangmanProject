@@ -5,12 +5,12 @@ import (
 	"os"
 )
 
-func errorDectection(errDict error) {
+func errorDectection(errDict string) {
 	file, err := os.Create("errorGestionary.txt")
 	if err != nil {
 		log.Fatal(err)
 	} else {
-		_, err = file.WriteString(errDict.Error())
+		_, err = file.WriteString(errDict)
 		if err != nil {
 			log.Fatal(err)
 		}
