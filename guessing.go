@@ -5,7 +5,6 @@ import "fmt"
 // TODO Add Comments 😉 !!!
 
 func GuessingLetter(listOfLetterAlreadySay *[]rune) {
-	var input string
 	var letterGuessed rune
 	fmt.Print("Can you give me a letter please : ")
 	for fmt.Scanf("%s", &input); !IsNotValid(input, *listOfLetterAlreadySay); fmt.Scanf("%s", &input) {

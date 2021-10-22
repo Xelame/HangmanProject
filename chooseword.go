@@ -1,41 +1,44 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
+	"log"
 	"math/rand"
+	"os"
 	"time"
 )
 
 // Main Function to choose a word randomly in my dictionary
-func ChooseWord(dictionary []byte) string {
-	dictLenght := CalcNumberOfWord(dictionary)     // Fund number of word
-	randomNumber := ChooseRandomNumber(dictLenght) // Generate random number
-	return ReadWord(dictionary, randomNumber)      // Return my word
+func ChooseWord(dictionary string) string {
+	var contentOfDictionary = []string{}
+	dictionaryFile, errOpen := os.Open(dictionary)
+	if errOpen != nil {
+		errorDectection(errOpen.Error())
+		log.Fatal(TEXT_ERROR_DICT)
+	}
+	defer dictionaryFile.Close()
+
+	scanner := bufio.NewScanner(dictionaryFile)
+	for scanner.Scan() {
+		contentOfDictionary = append(contentOfDictionary, scanner.Text())
+	}
+	fmt.Println(len(contentOfDictionary))
+	//randomNumber := ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
+	return ReadWord(contentOfDictionary, 6) // Return my word
 }
 
 // Function read the word in my dictionary
-func ReadWord(dictionary []byte, wordPositionChoosen int) string {
-	count := 0
-	myWord := []byte{}
-	for _, bytes := range dictionary {
-		if count == wordPositionChoosen-1 { // To write the word I start after the previous line break
-			myWord = append(myWord, bytes)
-		}
-		if bytes == '\n' {
-			count++
-		}
-	}
-	return string(myWord[:len(myWord)-1]) // Return the word
-}
+func ReadWord(fileContent []string, wordPositionChoosen int) string {
+	//Partie José initialisation
+	var myWord string
 
-// Function to know number of word in the dictionary
-func CalcNumberOfWord(dictionary []byte) int {
-	count := 0
-	for _, bytes := range dictionary {
-		if bytes == '\n' { // each ligne break = new word
-			count++
+	for index, fileWord := range fileContent {
+		if index == wordPositionChoosen {
+			myWord = fileWord
 		}
 	}
-	return count
+	return myWord // Return the word
 }
 
 // Function to choose a random number beetween 0 and the last word position
