@@ -11,6 +11,8 @@ import (
 // FIXME Lecture des fichiers (+ entrée joueur) 🧙‍♂️
 // FIXME Fractionnage des fichier a revoir
 // TODO If it's possible, upgrade the ASCII ART 👨‍🎨
+//TODO If it's possible, create document for rules and you can open
+
 /*----------------------------------------------------------------------------------------------------------------
 **DECLARATION DE CONSTANTE**
  */
@@ -18,11 +20,14 @@ const TEXT_ERROR_DICT = "\n||HOO...no ... José couldn't choose a word :(       
 const TEXT_ERROR_NO_WORD = "No Word in file"
 const TEXT_ERROR_HANG = "\n||HOO no ... José did not find his rope!                        ||\n||Please close the program and open it so that José can find it.||"
 const TEXT_ERROR_NO_CONTENT = "No content in Hangman.txt"
+const TEXT_INTRO = "||Welcome to the Hangman game !                           ||\n||Will you be able to find the hidden word and save José ?||"
+const TEXT_FINISH_WIN = "Well Played you found the word and save Jose !\nDo you want to retry ? [Y]es or [N]o"
+const TEXT_FINISH_LOST = "Poor Jose ...\nRetry your chance for him to survive ? [Y]es or [N]o"
 
 //----------------------------------------------------------------------------------------------------------------
 func main() {
 	// Partie recherche du mot dans le fichier
-	dictionary, errDict := ioutil.ReadFile("word.txt")
+	dictionary, errDict := ioutil.ReadFile("words.txt")
 	if errDict != nil {
 		errorDectection(errDict.Error())
 		log.Fatal(TEXT_ERROR_DICT)
@@ -52,7 +57,7 @@ func main() {
 	}
 
 	//Partie présentation du jeu
-	fmt.Println("||Welcome to the Hangman game !             ||\n||Will you be able to find the hidden word ?||")
+	fmt.Println(TEXT_INTRO)
 
 	//Partie boucle de jeu
 	attempts := 10
@@ -71,10 +76,10 @@ func main() {
 	PrintJose(attempts, string(contenuHangmanByte))
 	fmt.Println(HideWord(wordChoosen, &solution))
 	if attempts != 0 {
-		fmt.Println("Well Played you found the word and save Jose !\nDo you want to retry ? [Y]es or [N]o")
+		fmt.Println(TEXT_FINISH_WIN)
 		Retry()
 	} else {
-		fmt.Println("Poor Jose ...\nRetry your chance for him to survive ? [Y]es or [N]o")
+		fmt.Println(TEXT_FINISH_LOST)
 		Retry()
 	}
 }
