@@ -16,7 +16,11 @@ func GuessingLetter(listOfLetterAlreadySay *[]rune) {
 
 func IsNotValid(guessingInput string, listOfLetterAlreadySay []rune) bool {
 	isValid := true
-	if len(guessingInput) == 1 {
+	count := 0
+	for range guessingInput {
+		count++
+	}
+	if count == 1 {
 		guessingLetter := ToUpper(rune(guessingInput[0]))
 		for _, letterAlreadyHere := range listOfLetterAlreadySay {
 			if guessingLetter == letterAlreadyHere {
