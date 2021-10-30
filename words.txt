@@ -4,7 +4,7 @@ cabinet
 carreau
 chaise
 classe
-cle
+porte-manteau
 coin
 couloir
 dossier

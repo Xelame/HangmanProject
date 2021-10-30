@@ -10,7 +10,9 @@ func GuessingLetter(listOfLetterAlreadySay *[]rune) {
 	for fmt.Scanf("%s", &input); !IsNotValid(input, *listOfLetterAlreadySay); fmt.Scanf("%s", &input) {
 		fmt.Print("Can you give me a letter please : ")
 	}
-	letterGuessed = ToUpper(rune(input[0]))
+	for _, value := range input {
+		letterGuessed = ToUpper(rune(value))
+	}
 	*listOfLetterAlreadySay = append(*listOfLetterAlreadySay, letterGuessed)
 }
 
@@ -28,7 +30,7 @@ func IsNotValid(guessingInput string, listOfLetterAlreadySay []rune) bool {
 				fmt.Println("This letter is already says.")
 			}
 		}
-		if !(IsUpper(guessingLetter) || IsLower(guessingLetter)) {
+		if !(IsUpper(guessingLetter) || IsLower(guessingLetter) || IsExctendedAsciiLetter(guessingLetter)) {
 			isValid = false
 			fmt.Println("Don't write something else than a letter please.")
 		}
@@ -54,8 +56,15 @@ func IsUpper(value rune) bool {
 }
 
 func ToUpper(value rune) rune {
-	if 'a' <= value && value <= 'z' {
+	if ('a' <= value && value <= 'z') || (224 <= value && value <= 255) {
 		value -= 32
 	}
 	return value
+}
+
+func IsExctendedAsciiLetter(value rune) bool {
+	if 192 <= value && value <= 255 {
+		return true
+	}
+	return false
 }
