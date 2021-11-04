@@ -15,7 +15,6 @@ import (
 )
 
 func Game(attemptsNumber int) {
-	defer fmt.Print("clr")
 	fmt.Print(HANGMAN_BANNER)
 	//Partie présentation du jeu
 	fmt.Println(TEXT_INTRO)
@@ -31,6 +30,7 @@ func Game(attemptsNumber int) {
 		} else {
 			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 		}
+
 	}
 	PrintJose(attemptsNumber, HANGMAN_FILENAME)
 	fmt.Println(HideWord(wordChoosen, &solution))

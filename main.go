@@ -4,10 +4,12 @@
 // FIXME Gestions des constantes (notamment les strings) 🕵️‍♂️
 // FIXME Lecture des fichiers (+ entrée joueur) 🧙‍♂️
 // FIXME Fractionnage des fichier a revoir
+// FIXME Retravailler le desing pour plsu explicite
 
 /* -----------------------------------------------------------------------------------
  * Auteur : BOURRY Nathan et Alexandre ROLLAND                     Créer le : 18/10/21
- * main.go                                                             Version : v1.0
+ * main.go
+ * Programme principale                                                 Version : v1.0
  * ---------------------------------------------------------------------------------*/
 
 package main
@@ -45,7 +47,7 @@ var lettersAlreadyAppeard = []rune{'-', ToUpper(rune(startHint))}
 var hiddenWord string = HideWord(wordChoosen, &lettersAlreadyAppeard)
 
 // -----------------------------------------------------------------------------------
-// Partie principale du programme
+// Partie du programme
 // -----------------------------------------------------------------------------------
 
 func main() {

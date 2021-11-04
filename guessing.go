@@ -1,14 +1,45 @@
+/* -----------------------------------------------------------------------------------
+ * Auteur : BOURRY Nathan et Alexandre ROLLAND                     Créer le : 19/10/21
+ * guessing.go                                                          Version : v1.0
+ * Programme qui sert à gerer la partie des choix du joueur (lettre)
+ * ---------------------------------------------------------------------------------*/
+
 package main
 
+// -----------------------------------------------------------------------------------
+// Partie importation librairie
+// -----------------------------------------------------------------------------------
+
 import "fmt"
+
+//-------------------------------------------------------------------------------------
+//Partie déclaration des constantes
+//-------------------------------------------------------------------------------------
+
+const ALREADY_SAYS = "This letter is already says."
+const ASK_LETTER = "Can you give me a letter please : "
+const WRITE_SOMETHING = "Don't write something else than a letter please."
+const ONE_LETTER = "Don't write more than one letter please."
+
+// -----------------------------------------------------------------------------------
+// Partie déclaration des variables
+// -----------------------------------------------------------------------------------
+
+var letterGuessed rune = ' '
+var isValid bool = true
+var count int = 0
+var guessingLetter rune = ' '
+
+// -----------------------------------------------------------------------------------
+// Partie du programme
+// -----------------------------------------------------------------------------------
 
 // TODO Add Comments 😉 !!!
 
 func GuessingLetter(listOfLetterAlreadySay *[]rune) {
-	var letterGuessed rune
-	fmt.Print("Can you give me a letter please : ")
+	fmt.Print(ASK_LETTER)
 	for fmt.Scanf("%s", &input); !IsNotValid(input, *listOfLetterAlreadySay); fmt.Scanf("%s", &input) {
-		fmt.Print("Can you give me a letter please : ")
+		fmt.Print(ASK_LETTER)
 	}
 	for _, value := range input {
 		letterGuessed = ToUpper(rune(value))
@@ -17,35 +48,28 @@ func GuessingLetter(listOfLetterAlreadySay *[]rune) {
 }
 
 func IsNotValid(guessingInput string, listOfLetterAlreadySay []rune) bool {
-	isValid := true
-	count := 0
+	count = 0
+	isValid = true
 	for range guessingInput {
 		count++
 	}
 	if count == 1 {
-		guessingLetter := ToUpper(rune(guessingInput[0]))
+		guessingLetter = ToUpper(rune(guessingInput[0]))
 		for _, letterAlreadyHere := range listOfLetterAlreadySay {
 			if guessingLetter == letterAlreadyHere {
 				isValid = false
-				fmt.Println("This letter is already says.")
+				fmt.Println(ALREADY_SAYS)
 			}
 		}
-		if !(IsUpper(guessingLetter) || IsLower(guessingLetter) || IsExctendedAsciiLetter(guessingLetter)) {
+		if !(IsUpper(guessingLetter) || IsExctendedAsciiLetter(guessingLetter)) {
 			isValid = false
-			fmt.Println("Don't write something else than a letter please.")
+			fmt.Println(WRITE_SOMETHING)
 		}
 	} else {
 		isValid = false
-		fmt.Println("Don't write more than one letter please.")
+		fmt.Println(ONE_LETTER)
 	}
 	return isValid
-}
-
-func IsLower(value rune) bool {
-	if 'a' <= int(value) && int(value) <= 'z' {
-		return true
-	}
-	return false
 }
 
 func IsUpper(value rune) bool {
