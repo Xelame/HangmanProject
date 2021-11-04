@@ -10,16 +10,20 @@ package main
 // Partie importation librairie
 // -----------------------------------------------------------------------------------
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Game(attemptsNumber int) {
+	defer fmt.Print("clr")
+	fmt.Print(HANGMAN_BANNER)
 	//Partie présentation du jeu
 	fmt.Println(TEXT_INTRO)
 	//Partie boucle de jeu
 	for isFinished(attemptsNumber, hiddenWord) {
 		fmt.Println(HideWord(wordChoosen, &lettersAlreadyAppeard))
 		PrintJose(attemptsNumber, HANGMAN_FILENAME) // Récupération des données du fichier
-
+		AttemptsColor(attemptsNumber)
 		// Part Input Player
 		GuessingLetter(&lettersAlreadyAppeard)
 		if hiddenWord == HideWord(wordChoosen, &lettersAlreadyAppeard) {
@@ -49,4 +53,18 @@ func Retry() {
 			main()
 		}
 	}
+}
+
+func AttemptsColor(attemptsNumber int) {
+	switch {
+	case 8 <= attemptsNumber && attemptsNumber <= 10:
+		fmt.Printf("You have \033[32m%d\033[0m tries left\n", attemptsNumber)
+	case 5 <= attemptsNumber && attemptsNumber <= 7:
+		fmt.Printf("You have \033[33m%d\033[0m tries left\n", attemptsNumber)
+	case 2 <= attemptsNumber && attemptsNumber <= 4:
+		fmt.Printf("You have \033[31m%d\033[0m tries left\n", attemptsNumber)
+	case attemptsNumber == 1:
+		fmt.Printf("You have \033[31m%d\033[0m try left\n", attemptsNumber)
+	}
+
 }
