@@ -1,4 +1,14 @@
+/* -----------------------------------------------------------------------------------
+ * Auteur : BOURRY Nathan et Alexandre ROLLAND                     Créer le : 18/10/21
+ * chooseword.go                                                        Version : v1.0
+ * Programme qui sert choisir un mot aléatoire parmi le dictionnaire
+ * ---------------------------------------------------------------------------------*/
+
 package main
+
+// -----------------------------------------------------------------------------------
+// Partie importation librairie
+// -----------------------------------------------------------------------------------
 
 import (
 	"bufio"
@@ -9,9 +19,22 @@ import (
 	"time"
 )
 
-// Main Function to choose a word randomly in my dictionary
+//-------------------------------------------------------------------------------------
+//Partie déclaration des constantes
+//-------------------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------------
+// Partie déclaration des variables
+// -----------------------------------------------------------------------------------
+
+var randomNumber int = 0
+var contentOfDictionary = []string{}
+
+// -----------------------------------------------------------------------------------
+// Partie du programme
+// -----------------------------------------------------------------------------------
+
 func ChooseWord(dictionary string) string {
-	var contentOfDictionary = []string{}
 	dictionaryFile, errOpen := os.Open(dictionary)
 	if errOpen != nil {
 		errorDectection(errOpen.Error())
@@ -24,8 +47,8 @@ func ChooseWord(dictionary string) string {
 		contentOfDictionary = append(contentOfDictionary, scanner.Text())
 	}
 	fmt.Println(len(contentOfDictionary))
-	randomNumber := ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
-	return ReadWord(contentOfDictionary, randomNumber)           // Return my word
+	randomNumber = ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
+	return ReadWord(contentOfDictionary, randomNumber)          // Return my word
 }
 
 // Function read the word in my dictionary

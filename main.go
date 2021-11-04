@@ -4,10 +4,12 @@
 // FIXME Gestions des constantes (notamment les strings) 🕵️‍♂️
 // FIXME Lecture des fichiers (+ entrée joueur) 🧙‍♂️
 // FIXME Fractionnage des fichier a revoir
+// FIXME Retravailler le desing pour plsu explicite
 
 /* -----------------------------------------------------------------------------------
  * Auteur : BOURRY Nathan et Alexandre ROLLAND                     Créer le : 18/10/21
- * main.go                                                             Version : v1.0
+ * main.go
+ * Programme principale                                                 Version : v1.0
  * ---------------------------------------------------------------------------------*/
 
 package main
@@ -34,20 +36,21 @@ const TEXT_INTRO = "||Welcome to the Hangman game !                           ||
 const TEXT_FINISH_WIN = "Well Played you found the word and save Jose !\nDo you want to retry ? [Y]es or [N]o"
 const TEXT_FINISH_LOST = "Poor Jose ...\nRetry your chance for him to survive ? [Y]es or [N]o"
 
-var wordChoosen string = ChooseWord(DICTIONARY_FILENAME) //VAR
-var input string                                         //var
 var solution = []rune{'-', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï'}
 
 // -----------------------------------------------------------------------------------
 // Partie déclaration des variables
 // -----------------------------------------------------------------------------------
 
+var wordChoosen string = ""
+var input string = ""
+
 // -----------------------------------------------------------------------------------
-// Partie principale du programme
+// Partie du programme
 // -----------------------------------------------------------------------------------
 
 func main() {
-
+	wordChoosen = ChooseWord(DICTIONARY_FILENAME)
 	// Hidden word part
 	lettersAlreadyAppeard := []rune{'-'}           //VAR
 	startHint := wordChoosen[len(wordChoosen)/2-1] //VAR
