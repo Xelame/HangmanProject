@@ -12,16 +12,11 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"math/rand"
 	"os"
 	"time"
 )
-
-//-------------------------------------------------------------------------------------
-//Partie déclaration des constantes
-//-------------------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------------
 // Partie déclaration des variables
@@ -46,9 +41,8 @@ func ChooseWord(dictionary string) string {
 	for scanner.Scan() {
 		contentOfDictionary = append(contentOfDictionary, scanner.Text())
 	}
-	fmt.Println(len(contentOfDictionary))
-	randomNumber = ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
-	return ReadWord(contentOfDictionary, randomNumber)          // Return my word
+	randomNumber := ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
+	return ReadWord(contentOfDictionary, randomNumber)           // Return my word
 }
 
 // Function read the word in my dictionary

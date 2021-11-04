@@ -25,6 +25,8 @@ var numberOfLetterMissing int = 0
 // -----------------------------------------------------------------------------------
 
 func isFinished(numberOfAttempts int, word string) bool {
+	isRunning = true
+	numberOfLetterMissing = 0
 	if numberOfAttempts == 0 { // if we haven't no longer attempts
 		isRunning = false
 	}

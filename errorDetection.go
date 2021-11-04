@@ -19,7 +19,7 @@ import (
 //Partie déclaration des constantes
 //-------------------------------------------------------------------------------------
 
-const DocumentError = "errorGestionary.txt"
+const DOCUMENT_ERROR = "errorGestionary.txt"
 
 // -----------------------------------------------------------------------------------
 // Partie déclaration des variables
@@ -30,7 +30,7 @@ const DocumentError = "errorGestionary.txt"
 // -----------------------------------------------------------------------------------
 
 func errorDectection(errDict string) {
-	file, err := os.Create(DocumentError)
+	file, err := os.Create(DOCUMENT_ERROR)
 	if err != nil {
 		log.Fatal(err)
 	} else {

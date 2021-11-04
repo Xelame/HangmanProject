@@ -48,6 +48,8 @@ func GuessingLetter(listOfLetterAlreadySay *[]rune) {
 }
 
 func IsNotValid(guessingInput string, listOfLetterAlreadySay []rune) bool {
+	count = 0
+	isValid = true
 	for range guessingInput {
 		count++
 	}
