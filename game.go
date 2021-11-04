@@ -50,6 +50,7 @@ func Retry() {
 			startHint = wordChoosen[len(wordChoosen)/2-1]
 			lettersAlreadyAppeard = []rune{'-'}
 			lettersAlreadyAppeard = append(lettersAlreadyAppeard, ToUpper(rune(startHint)))
+			hiddenWord = HideWord(wordChoosen, &lettersAlreadyAppeard)
 			main()
 		}
 	}

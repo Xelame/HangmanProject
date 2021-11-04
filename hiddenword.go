@@ -18,15 +18,14 @@ package main
 // Partie déclaration des variables
 // -----------------------------------------------------------------------------------
 
-var hiddenWord = []rune{} // Initialize hiddenword
-var isAlreadySay bool = false
-
 // -----------------------------------------------------------------------------------
 // Partie du programme
 // -----------------------------------------------------------------------------------
 
 func HideWord(word string, listOfLetterAlreadySay *[]rune) string {
-	for _, letter := range word { // travel word letter by letter                                   // Bool to know the presence of a letter
+	hiddenWord := []rune{}        // Initialize hiddenword
+	for _, letter := range word { // travel word letter by letter
+		isAlreadySay := false                                    // Bool to know the presence of a letter
 		for _, letterAppeared := range *listOfLetterAlreadySay { // travel letters memories
 			if ToUpper(letter) == letterAppeared { // Test if letter does be show
 				isAlreadySay = true

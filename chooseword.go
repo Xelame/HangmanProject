@@ -41,8 +41,8 @@ func ChooseWord(dictionary string) string {
 	for scanner.Scan() {
 		contentOfDictionary = append(contentOfDictionary, scanner.Text())
 	}
-	randomNumber := ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
-	return ReadWord(contentOfDictionary, randomNumber)           // Return my word
+	randomNumber = ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
+	return ReadWord(contentOfDictionary, randomNumber)          // Return my word
 }
 
 // Function read the word in my dictionary
