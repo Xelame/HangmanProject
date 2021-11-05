@@ -12,6 +12,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
 )
 
 func Game(attemptsNumber int) {
@@ -35,6 +37,7 @@ func Game(attemptsNumber int) {
 	PrintJose(attemptsNumber, HANGMAN_FILENAME)
 	fmt.Println(HideWord(wordChoosen, &solution))
 	if attemptsNumber != 0 {
+		Animation(winText)
 		fmt.Println(TEXT_FINISH_WIN)
 	} else {
 		fmt.Println(TEXT_FINISH_LOST)
@@ -43,6 +46,7 @@ func Game(attemptsNumber int) {
 
 func Retry() {
 	fmt.Scanf("%s", &input)
+	Clear()
 	if len(input) == 1 {
 		letter := rune(input[0])
 		if ToUpper(letter) == 'Y' {
@@ -68,4 +72,10 @@ func AttemptsColor(attemptsNumber int) {
 		fmt.Printf("You have \033[31m%d\033[0m try left\n", attemptsNumber)
 	}
 
+}
+
+func Clear() {
+	cmd := exec.Command("clear") //Linux example, its tested
+	cmd.Stdout = os.Stdout
+	cmd.Run()
 }
