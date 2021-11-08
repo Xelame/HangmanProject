@@ -22,54 +22,47 @@ const WRITE_SOMETHING = "Don't write something else than a letter please."
 const ONE_LETTER = "Don't write more than one letter please."
 
 // -----------------------------------------------------------------------------------
-// Partie déclaration des variables
-// -----------------------------------------------------------------------------------
-
-var letterGuessed rune = ' '
-var isValid bool = true
-var count int = 0
-var guessingLetter rune = ' '
-
-// -----------------------------------------------------------------------------------
 // Partie du programme
 // -----------------------------------------------------------------------------------
 
 // TODO Add Comments 😉 !!!
 
-func GuessingLetter(listOfLetterAlreadySay *[]rune) {
+func GuessingLetter() {
+	var letterGuessed rune = ' '
 	fmt.Print(ASK_LETTER)
-	for fmt.Scanf("%s", &input); !IsNotValid(input, *listOfLetterAlreadySay); fmt.Scanf("%s", &input) {
+	for fmt.Scanf("%s", &input); IsValidEntry(input); fmt.Scanf("%s", &input) {
 		fmt.Print(ASK_LETTER)
 	}
 	for _, value := range input {
 		letterGuessed = ToUpper(rune(value))
 	}
-	*listOfLetterAlreadySay = append(*listOfLetterAlreadySay, letterGuessed)
+	lettersAlreadyAppeard = append(lettersAlreadyAppeard, letterGuessed)
 }
 
-func IsNotValid(guessingInput string, listOfLetterAlreadySay []rune) bool {
-	count = 0
-	isValid = true
+func IsValidEntry(guessingInput string) bool {
+	var guessingLetter rune = ' '
+	var count int = 0
+	isNotValid := false
 	for range guessingInput {
 		count++
 	}
 	if count == 1 {
 		guessingLetter = ToUpper(rune(guessingInput[0]))
-		for _, letterAlreadyHere := range listOfLetterAlreadySay {
+		for _, letterAlreadyHere := range lettersAlreadyAppeard {
 			if guessingLetter == letterAlreadyHere {
-				isValid = false
+				isNotValid = true
 				fmt.Println(ALREADY_SAYS)
 			}
 		}
 		if !(IsUpper(guessingLetter) || IsExctendedAsciiLetter(guessingLetter)) {
-			isValid = false
+			isNotValid = true
 			fmt.Println(WRITE_SOMETHING)
 		}
 	} else {
-		isValid = false
+		isNotValid = true
 		fmt.Println(ONE_LETTER)
 	}
-	return isValid
+	return isNotValid
 }
 
 func IsUpper(value rune) bool {
