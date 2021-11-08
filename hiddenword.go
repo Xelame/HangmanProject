@@ -1,10 +1,10 @@
 package main
 
-func HideWord(word string, listOfLetterAlreadySay *[]rune) string {
+func HideWord(word string, listOfLetterAlreadySay []rune) string {
 	hiddenWord := []rune{}        // Initialize hiddenword
 	for _, letter := range word { // travel word letter by letter
-		isAlreadySay := false                                    // Bool to know the presence of a letter
-		for _, letterAppeared := range *listOfLetterAlreadySay { // travel letters memories
+		isAlreadySay := false                                   // Bool to know the presence of a letter
+		for _, letterAppeared := range listOfLetterAlreadySay { // travel letters memories
 			if ToUpper(letter) == letterAppeared { // Test if letter does be show
 				isAlreadySay = true
 			}
