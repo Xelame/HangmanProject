@@ -80,14 +80,14 @@ func IsUpper(value rune) bool {
 }
 
 func ToUpper(value rune) rune {
-	if ('a' <= value && value <= 'z') || (224 <= value && value <= 255) {
-		value -= 32
+	if ('a' <= value && value <= 'z') || ('à' <= value && value <= 'ÿ') {
+		value -= 32 // Pour maj
 	}
 	return value
 }
 
 func IsExctendedAsciiLetter(value rune) bool {
-	if 192 <= value && value <= 255 {
+	if 'À' <= value && value <= 'ÿ' {
 		return true
 	}
 	return false
