@@ -4,8 +4,8 @@
 // FIXME Lecture des fichiers (+ entrée joueur) 🧙‍♂️
 // FIXME Fractionnage des fichier a revoir
 // FIXME Retravailler le desing pour plsu explicite
-
-//Commentaire, menu, règle, langue
+//FIXME gestion d'erreur afficeh les chose avant !
+//Commentaire, menu, règle, langue, difficulté
 
 /* -----------------------------------------------------------------------------------
  * Auteur : BOURRY Nathan et Alexandre ROLLAND                     Créer le : 18/10/21
