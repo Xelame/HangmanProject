@@ -37,7 +37,7 @@ func Menu() {
 	// Introduction
 	fmt.Println(TEXT_INTRO + "\n \n")
 
-	fmt.Scan("%s", &input)
+	fmt.Scanf("%s", &input)
 
 	switch input {
 	case "1":
