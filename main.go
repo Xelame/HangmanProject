@@ -52,7 +52,7 @@ var hiddenWord string = HideWord(wordChoosen, &lettersAlreadyAppeard)
 // -----------------------------------------------------------------------------------
 
 func main() {
-
+	openRules("Rules.txt")
 	Game(ATTEMPTS_NUMBER)
 	Retry()
 
