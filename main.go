@@ -22,7 +22,6 @@ package main
 func main() {
 
 	Menu()
-	//Game(ATTEMPTS_NUMBER)
-	//Retry()
+	Retry()
 
 }

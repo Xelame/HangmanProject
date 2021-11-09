@@ -57,18 +57,20 @@ func Game(attemptsNumber int) {
 	} else {
 		fmt.Println(TEXT_FINISH_LOST)
 	}
+	Retry()
 }
 
 func Retry() {
 	fmt.Scanf("%s", &input)
 	Clear()
+	lettersAlreadyAppeard = []rune{'-'}
 	if len(input) == 1 {
 		letter := rune(input[0])
 		if ToUpper(letter) == 'Y' {
-			lettersAlreadyAppeard = []rune{'-'}
-			main()
+			Game(ATTEMPTS_NUMBER)
 		}
 	}
+	Menu()
 }
 
 func AttemptsColor(attemptsNumber int) {
