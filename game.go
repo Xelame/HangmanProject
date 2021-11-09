@@ -46,7 +46,6 @@ func Game(attemptsNumber int) {
 		} else {
 			hiddenWord = HideWord(wordChoosen, lettersAlreadyAppeard)
 		}
-
 	}
 	PrintJose(attemptsNumber, HANGMAN_FILENAME)
 	fmt.Println(HideWord(wordChoosen, solution))

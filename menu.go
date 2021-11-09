@@ -44,10 +44,12 @@ func Menu() {
 		Game(ATTEMPTS_NUMBER)
 	case "2":
 		Clear()
-		fmt.Println("Rule")
+		Menu()
 	case "3":
 		Clear()
-		fmt.Println("Created by Alexandre Rolland and Nathan Bourry")
+		Menu()
+	case "4":
+		fmt.Println("See you later !")
 	}
 
 }
