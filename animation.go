@@ -5,7 +5,22 @@ import (
 	"time"
 )
 
-const WIN_TEXT = "WWWWWWWW                           WWWWWWWW     EEEEEEEEEEEEEEEEEEEEEE     LLLLLLLLLLL                  LLLLLLLLLLL                            PPPPPPPPPPPPPPPPP        LLLLLLLLLLL                                 AAA                    YYYYYYY       YYYYYYY     EEEEEEEEEEEEEEEEEEEEEE     DDDDDDDDDDDDD                                                                                                                       \nW::::::W                           W::::::W     E::::::::::::::::::::E     L:::::::::L                  L:::::::::L                            P::::::::::::::::P       L:::::::::L                                A:::A                   Y:::::Y       Y:::::Y     E::::::::::::::::::::E     D::::::::::::DDD                                                                                                                    \nW::::::W                           W::::::W     E::::::::::::::::::::E     L:::::::::L                  L:::::::::L                            P::::::PPPPPP:::::P      L:::::::::L                               A:::::A                  Y:::::Y       Y:::::Y     E::::::::::::::::::::E     D:::::::::::::::DD                                                                                                                  \nW::::::W                           W::::::W     EE::::::EEEEEEEEE::::E     LL:::::::LL                  LL:::::::LL                            PP:::::P     P:::::P     LL:::::::LL                              A:::::::A                 Y::::::Y     Y::::::Y     EE::::::EEEEEEEEE::::E     DDD:::::DDDDD:::::D                                                                                                                 \n W:::::W           WWWWW           W:::::W        E:::::E       EEEEEE       L:::::L                      L:::::L                                P::::P     P:::::P       L:::::L                               A:::::::::A                YYY:::::Y   Y:::::YYY       E:::::E       EEEEEE       D:::::D    D:::::D                                                                                                                \n  W:::::W         W:::::W         W:::::W         E:::::E                    L:::::L                      L:::::L                                P::::P     P:::::P       L:::::L                              A:::::A:::::A                  Y:::::Y Y:::::Y          E:::::E                    D:::::D     D:::::D                                                                                                               \n   W:::::W       W:::::::W       W:::::W          E::::::EEEEEEEEEE          L:::::L                      L:::::L                                P::::PPPPPP:::::P        L:::::L                             A:::::A A:::::A                  Y:::::Y:::::Y           E::::::EEEEEEEEEE          D:::::D     D:::::D                                                                                                               \n    W:::::W     W:::::::::W     W:::::W           E:::::::::::::::E          L:::::L                      L:::::L                                P:::::::::::::PP         L:::::L                            A:::::A   A:::::A                  Y:::::::::Y            E:::::::::::::::E          D:::::D     D:::::D                                                                                                               \n     W:::::W   W:::::W:::::W   W:::::W            E:::::::::::::::E          L:::::L                      L:::::L                                P::::PPPPPPPPP           L:::::L                           A:::::A     A:::::A                  Y:::::::Y             E:::::::::::::::E          D:::::D     D:::::D                                                                                                               \n      W:::::W W:::::W W:::::W W:::::W             E::::::EEEEEEEEEE          L:::::L                      L:::::L                                P::::P                   L:::::L                          A:::::AAAAAAAAA:::::A                  Y:::::Y              E::::::EEEEEEEEEE          D:::::D     D:::::D                                                                                                               \n       W:::::W:::::W   W:::::W:::::W              E:::::E                    L:::::L                      L:::::L                                P::::P                   L:::::L                         A:::::::::::::::::::::A                 Y:::::Y              E:::::E                    D:::::D     D:::::D                                                                                                               \n        W:::::::::W     W:::::::::W               E:::::E       EEEEEE       L:::::L         LLLLLL       L:::::L         LLLLLL                 P::::P                   L:::::L         LLLLLL         A:::::AAAAAAAAAAAAA:::::A                Y:::::Y              E:::::E       EEEEEE       D:::::D    D:::::D                                                                                                                \n         W:::::::W       W:::::::W              EE::::::EEEEEEEE:::::E     LL:::::::LLLLLLLLL:::::L     LL:::::::LLLLLLLLL:::::L               PP::::::PP               LL:::::::LLLLLLLLL:::::L        A:::::A             A:::::A               Y:::::Y            EE::::::EEEEEEEE:::::E     DDD:::::DDDDD:::::D                                                                                                                 \n          W:::::W         W:::::W               E::::::::::::::::::::E     L::::::::::::::::::::::L     L::::::::::::::::::::::L               P::::::::P               L::::::::::::::::::::::L       A:::::A               A:::::A           YYYY:::::YYYY         E::::::::::::::::::::E     D:::::::::::::::DD                                                                                                                  \n           W:::W           W:::W                E::::::::::::::::::::E     L::::::::::::::::::::::L     L::::::::::::::::::::::L               P::::::::P               L::::::::::::::::::::::L      A:::::A                 A:::::A          Y:::::::::::Y         E::::::::::::::::::::E     D::::::::::::DDD                                                                                                                    \n            WWW             WWW                 EEEEEEEEEEEEEEEEEEEEEE     LLLLLLLLLLLLLLLLLLLLLLLL     LLLLLLLLLLLLLLLLLLLLLLLL               PPPPPPPPPP               LLLLLLLLLLLLLLLLLLLLLLLL     AAAAAAA                   AAAAAAA         YYYYYYYYYYYYY         EEEEEEEEEEEEEEEEEEEEEE     DDDDDDDDDDDDD                                                                                                                       \n"
+const WIN_TEXT = `YYYYYYY       YYYYYYY          OOOOOOOOO          UUUUUUUU     UUUUUUUU               WWWWWWWW                           WWWWWWWW     IIIIIIIIII     NNNNNNNN        NNNNNNNN
+Y:::::Y       Y:::::Y        OO:::::::::OO        U::::::U     U::::::U               W::::::W                           W::::::W     I::::::::I     N:::::::N       N::::::N
+Y:::::Y       Y:::::Y      OO:::::::::::::OO      U::::::U     U::::::U               W::::::W                           W::::::W     I::::::::I     N::::::::N      N::::::N
+Y::::::Y     Y::::::Y     O:::::::OOO:::::::O     UU:::::U     U:::::UU               W::::::W                           W::::::W     II::::::II     N:::::::::N     N::::::N
+YYY:::::Y   Y:::::YYY     O::::::O   O::::::O      U:::::U     U:::::U                 W:::::W           WWWWW           W:::::W        I::::I       N::::::::::N    N::::::N
+   Y:::::Y Y:::::Y        O:::::O     O:::::O      U:::::D     D:::::U                  W:::::W         W:::::W         W:::::W         I::::I       N:::::::::::N   N::::::N
+    Y:::::Y:::::Y         O:::::O     O:::::O      U:::::D     D:::::U                   W:::::W       W:::::::W       W:::::W          I::::I       N:::::::N::::N  N::::::N
+     Y:::::::::Y          O:::::O     O:::::O      U:::::D     D:::::U                    W:::::W     W:::::::::W     W:::::W           I::::I       N::::::N N::::N N::::::N
+      Y:::::::Y           O:::::O     O:::::O      U:::::D     D:::::U                     W:::::W   W:::::W:::::W   W:::::W            I::::I       N::::::N  N::::N:::::::N
+       Y:::::Y            O:::::O     O:::::O      U:::::D     D:::::U                      W:::::W W:::::W W:::::W W:::::W             I::::I       N::::::N   N:::::::::::N
+       Y:::::Y            O:::::O     O:::::O      U:::::D     D:::::U                       W:::::W:::::W   W:::::W:::::W              I::::I       N::::::N    N::::::::::N
+       Y:::::Y            O::::::O   O::::::O      U::::::U   U::::::U                        W:::::::::W     W:::::::::W               I::::I       N::::::N     N:::::::::N
+       Y:::::Y            O:::::::OOO:::::::O      U:::::::UUU:::::::U                         W:::::::W       W:::::::W              II::::::II     N::::::N      N::::::::N
+    YYYY:::::YYYY          OO:::::::::::::OO        UU:::::::::::::UU                           W:::::W         W:::::W               I::::::::I     N::::::N       N:::::::N
+    Y:::::::::::Y            OO:::::::::OO            UU:::::::::UU                              W:::W           W:::W                I::::::::I     N::::::N        N::::::N
+    YYYYYYYYYYYYY              OOOOOOOOO                UUUUUUUUU                                 WWW             WWW                 IIIIIIIIII     NNNNNNNN         NNNNNNN`
 
 var winText = Split(WIN_TEXT, "\n")
 
@@ -32,21 +47,25 @@ func Animation(listxt []string) {
 	fmt.Print("\033[32m")
 	numberOfSpace := 0
 	indexWrap := 1
-	for indexVisible := 0; indexVisible <= len(listxt[0]); indexVisible++ {
+	for indexVisible := 0; indexWrap < len(listxt[0]); indexVisible++ {
 		time.Sleep(50 * time.Millisecond)
 		Clear()
 		if numberOfSpace <= 0 {
 			indexWrap++
 		}
 		for _, line := range listxt[:(len(listxt) - 1)] {
-			numberOfSpace = len(line) - 307 - indexVisible // -307 pour la valeur pile ou l'animation disparait
-			for i := 0; i <= numberOfSpace; i++ {
-				fmt.Print(" ")
-			}
-			if numberOfSpace >= 0 {
-				fmt.Print(line[:indexVisible])
+			if indexVisible < len(line) {
+				numberOfSpace = len(line)/2 - indexVisible
+				for i := 0; i <= numberOfSpace; i++ {
+					fmt.Print(" ")
+				}
+				if numberOfSpace >= 0 {
+					fmt.Print(line[:indexVisible])
+				} else {
+					fmt.Print(line[indexWrap:indexVisible])
+				}
 			} else {
-				fmt.Print(line[indexWrap:indexVisible])
+				fmt.Print(line[indexWrap:])
 			}
 			fmt.Print("\n")
 		}
