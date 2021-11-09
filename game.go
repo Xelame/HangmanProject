@@ -18,9 +18,8 @@ import (
 
 const HANGMAN_FILENAME = "hangman.txt"
 const DICTIONARY_FILENAME = "words.txt"
-const TEXT_ERROR_DICT = "\n||HOO...no ... José couldn't choose a word :(                   ||\n||Please try to close and open the app again so José can decide!||"
 const TEXT_ERROR_NO_WORD = "No Word in file"
-const TEXT_ERROR_HANG = "\n||HOO no ... José did not find his rope!                        ||\n||Please close the program and open it so that José can find it.||"
+const TEXT_ERROR_OPEN = "\n||HOO no ... José did not find his rope!                        ||\n||Please close the program and open it so that José can find it.||"
 const TEXT_ERROR_NO_CONTENT = "No content in hangman file"
 const TEXT_FINISH_WIN = "Well Played you found the word and save Jose !\nDo you want to retry ? \033[92m[Y]es or \033[31m[N]o\033[0m"
 const TEXT_FINISH_LOST = "Poor Jose ...\nRetry your chance for him to survive ? \033[92m[Y]es\033[0m or \033[31m[N]o\033[0m"

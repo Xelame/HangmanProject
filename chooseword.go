@@ -11,10 +11,7 @@ package main
 // -----------------------------------------------------------------------------------
 
 import (
-	"bufio"
-	"log"
 	"math/rand"
-	"os"
 	"time"
 )
 
@@ -30,14 +27,9 @@ var contentOfDictionary = []string{}
 // -----------------------------------------------------------------------------------
 
 func ChooseWord(dictionary string) string {
-	dictionaryFile, errOpen := os.Open(dictionary)
-	if errOpen != nil {
-		errorDectection(errOpen.Error())
-		log.Fatal(TEXT_ERROR_DICT)
-	}
-	defer dictionaryFile.Close()
 
-	scanner := bufio.NewScanner(dictionaryFile)
+	scanner := OpenScanner(dictionary)
+
 	for scanner.Scan() {
 		contentOfDictionary = append(contentOfDictionary, scanner.Text())
 	}

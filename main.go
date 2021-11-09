@@ -15,13 +15,28 @@
 
 package main
 
+import (
+	"bufio"
+	"log"
+	"os"
+)
+
 // -----------------------------------------------------------------------------------
 // Partie du programme
 // -----------------------------------------------------------------------------------
 
 func main() {
-
 	Menu()
 	Retry()
 
+}
+
+func OpenScanner(fileName string) *bufio.Scanner {
+	file, errOpen := os.Open(fileName)
+	if errOpen != nil {
+		errorDectection(errOpen.Error())
+		log.Fatal(TEXT_ERROR_OPEN)
+	}
+	scanner := bufio.NewScanner(file)
+	return scanner
 }

@@ -11,10 +11,7 @@ package main
 // -----------------------------------------------------------------------------------
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
 )
 
 //-------------------------------------------------------------------------------------
@@ -32,15 +29,8 @@ const HANGMAN_LINE = 8
 // -----------------------------------------------------------------------------------
 
 func PrintJose(nbrs_tentative int, hangmanFileName string) {
-	//Partie José initialisation
-	contenuHangmanByte, errOpen := os.Open(hangmanFileName)
-	if errOpen != nil {
-		errorDectection(errOpen.Error())
-		log.Fatal(TEXT_ERROR_HANG)
-	}
-	defer contenuHangmanByte.Close()
 
-	reader := bufio.NewScanner(contenuHangmanByte)
+	reader := OpenScanner(hangmanFileName)
 
 	for i := 1; reader.Scan(); i++ {
 		if (10-nbrs_tentative)*HANGMAN_LINE <= i && i <= (10-nbrs_tentative+1)*HANGMAN_LINE {
