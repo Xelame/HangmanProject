@@ -1,28 +1,24 @@
-// TODO If it's possible, add language choose and adapt variables 📚
-// TODO If it's possible, create document for rules and you can open
-// FIXME Problème dans retry ça ne change pas de mots
-// FIXME Lecture des fichiers (+ entrée joueur) 🧙‍♂️
-// FIXME Fractionnage des fichier a revoir
-// FIXME Retravailler le desing pour plsu explicite
-
-//Commentaire, menu, règle, langue
-
-/* -----------------------------------------------------------------------------------
- * Auteur : BOURRY Nathan et Alexandre ROLLAND                     Créer le : 18/10/21
- * main.go
- * Programme principale                                                 Version : v1.0
- * ---------------------------------------------------------------------------------*/
-
 package main
+
+// -----------------------------------------------------------------------------------
+// Import Part
+// -----------------------------------------------------------------------------------
 
 import (
 	"bufio"
 	"log"
 	"os"
+	"os/exec"
 )
 
 // -----------------------------------------------------------------------------------
-// Partie du programme
+// Const and Var Part
+// -----------------------------------------------------------------------------------
+
+const DOCUMENT_ERROR = "errorGestionary.txt"
+
+// -----------------------------------------------------------------------------------
+// Program Part
 // -----------------------------------------------------------------------------------
 
 func main() {
@@ -39,4 +35,22 @@ func OpenScanner(fileName string) *bufio.Scanner {
 	}
 	scanner := bufio.NewScanner(file)
 	return scanner
+}
+
+func errorDectection(errDict string) {
+	file, err := os.Create(DOCUMENT_ERROR)
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		_, err = file.WriteString(errDict)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+}
+
+func Clear() {
+	cmd := exec.Command("clear") //Linux example, its tested
+	cmd.Stdout = os.Stdout
+	cmd.Run()
 }
