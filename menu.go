@@ -69,6 +69,7 @@ func Menu() {
 		Menu()
 	case "4":
 		// Stop the program
+		Clear()
 		fmt.Println("See you later !")
 	default:
 		// Anything else reset the menu
