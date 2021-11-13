@@ -1,61 +1,37 @@
-/* -----------------------------------------------------------------------------------
- * Auteur : BOURRY Nathan et Alexandre ROLLAND                     Créer le : 18/10/21
- * chooseword.go                                                        Version : v1.0
- * Programme qui sert choisir un mot aléatoire parmi le dictionnaire
- * ---------------------------------------------------------------------------------*/
-
 package main
 
 // -----------------------------------------------------------------------------------
-// Partie importation librairie
+// Import Part
 // -----------------------------------------------------------------------------------
 
 import (
-	"bufio"
-	"log"
 	"math/rand"
-	"os"
 	"time"
 )
 
 // -----------------------------------------------------------------------------------
-// Partie déclaration des variables
+// Const and Var Part
 // -----------------------------------------------------------------------------------
 
 var randomNumber int = 0
 var contentOfDictionary = []string{}
 
 // -----------------------------------------------------------------------------------
-// Partie du programme
+// Program Part
 // -----------------------------------------------------------------------------------
 
+// Function to take ramdom word in our file.txt with a list of words
 func ChooseWord(dictionary string) string {
-	dictionaryFile, errOpen := os.Open(dictionary)
-	if errOpen != nil {
-		errorDectection(errOpen.Error())
-		log.Fatal(TEXT_ERROR_DICT)
-	}
-	defer dictionaryFile.Close()
 
-	scanner := bufio.NewScanner(dictionaryFile)
-	for scanner.Scan() {
-		contentOfDictionary = append(contentOfDictionary, scanner.Text())
+	// Initialize a scanner
+	scanner := OpenScanner(dictionary)
+
+	// This scanner reads line by line our file.txt (so word by word)
+	for scanner.Scan() { // At each loop the scanner reads a new line
+		contentOfDictionary = append(contentOfDictionary, scanner.Text()) // Add each word in an array
 	}
 	randomNumber = ChooseRandomNumber(len(contentOfDictionary)) // Generate random number
-	return ReadWord(contentOfDictionary, randomNumber)          // Return my word
-}
-
-// Function read the word in my dictionary
-func ReadWord(fileContent []string, wordPositionChoosen int) string {
-	//Partie José initialisation
-	var myWord string
-
-	for index, fileWord := range fileContent {
-		if index == wordPositionChoosen {
-			myWord = fileWord
-		}
-	}
-	return myWord // Return the word
+	return contentOfDictionary[randomNumber]                    // Return my word
 }
 
 // Function to choose a random number beetween 0 and the last word position
@@ -66,4 +42,25 @@ func ChooseRandomNumber(numberOfWords int) int {
 	randomValue := rand.New(randomSource)
 	// Fix a limit for the random number who is my number of word
 	return randomValue.Intn(numberOfWords)
+}
+
+// Function to create our word with hide letters not guessed
+func HideWord(word string, listOfLetterAlreadySay []rune) string {
+	hiddenWord := []rune{}        // Initialize hiddenword
+	for _, letter := range word { // travel word letter by letter
+		isAlreadySay := false                                   // Bool to know the presence of a letter
+		for _, letterAppeared := range listOfLetterAlreadySay { // travel letters memories
+			if ToUpper(letter) == letterAppeared { // Test if letter does be show
+				isAlreadySay = true
+			}
+		}
+		if isAlreadySay { // Show either a letter or dash
+			hiddenWord = append(hiddenWord, ToUpper(letter))
+			hiddenWord = append(hiddenWord, ' ')
+		} else {
+			hiddenWord = append(hiddenWord, '_')
+			hiddenWord = append(hiddenWord, ' ')
+		}
+	}
+	return string(hiddenWord)
 }
