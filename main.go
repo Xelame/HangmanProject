@@ -56,7 +56,7 @@ func ErrorDectection(errFile string) {
 
 // Clear the console display
 func Clear() {
-	cmd := exec.Command("clear") // Affecte a la variable le chemin permet de lancer les commandes + la string préciser
-	cmd.Stdout = os.Stdout       // Affecte la valeur de sortie a celle de notre console
-	cmd.Run()                    // Execute la commande qui était préciser comme une string
+	cmd := exec.Command("clear") // Assigns to the variable the path to launch the commands + the specified string
+	cmd.Stdout = os.Stdout       // Assigns the output value to that of our console
+	cmd.Run()                    // Executes the command that was specified as a string
 }
