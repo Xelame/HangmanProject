@@ -34,8 +34,14 @@ var numberOfLetterMissing int = 0
 // Function to run the game
 func Game(attemptsNumber int) {
 	// At the beginning of each game
-	var wordChoosen string = ChooseWord(DICTIONARY_FILENAME)                        // Choose a word randomly
-	var startHint byte = wordChoosen[len(wordChoosen)/2-1]                          // Search the letter at the middle of this word
+	var wordChoosen string = ChooseWord(DICTIONARY_FILENAME) // Choose a word randomly
+	var startHint rune
+	// Search the letter at the middle of this word
+	for index, value := range wordChoosen {
+		if index == len(wordChoosen)/2-1 {
+			startHint = value
+		}
+	}
 	lettersAlreadyAppeard = append(lettersAlreadyAppeard, ToUpper(rune(startHint))) // Add this letter in our list
 	var hiddenWord string = HideWord(wordChoosen, lettersAlreadyAppeard)            // Initialize the word with his letters hide
 
