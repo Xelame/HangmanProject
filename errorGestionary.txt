@@ -1,1 +1,1 @@
-No content in Hangman.txt
+open words.txt: no such file or directory
